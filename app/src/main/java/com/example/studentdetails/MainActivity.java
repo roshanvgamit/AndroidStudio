@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         userList.add(new ModelClass(R.drawable.twelve,"Student","-------------------------------------"));
         userList.add(new ModelClass(R.drawable.thirteen,"Student","-------------------------------------"));
         userList.add(new ModelClass(R.drawable.fourteen,"Student","-------------------------------------"));
-        userList.add(new ModelClass(R.drawable.fifteen,"Student","-------------------------------------"));
+        userList.add(new ModelClass(R.drawable.fourteen,"Student","-------------------------------------"));
         userList.add(new ModelClass(R.drawable.sixteen,"Student","-------------------------------------"));
         userList.add(new ModelClass(R.drawable.seventeen,"Student","-------------------------------------"));
         userList.add(new ModelClass(R.drawable.eighteen,"Student","-------------------------------------"));
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void initRecyclerView() {
 
         recyclerView=findViewById(R.id.recyclerview);
@@ -71,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         adapter=new Adapter(userList);
         adapter.notifyDataSetChanged();
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
 
     }
 }
